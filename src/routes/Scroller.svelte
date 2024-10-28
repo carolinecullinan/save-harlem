@@ -1,6 +1,6 @@
 <script>
     import Scroller from "@sveltejs/svelte-scroller";
-    // import Map from "./Map.svelte";
+    import Map from "./Map.svelte";
    
 
     let count;
@@ -10,7 +10,6 @@
     let top = 0.01;
     let threshold = 0.5;
     let bottom = 0.9;
-    let marker; //marker for 125th street station
 
     const steps = [
         {
@@ -53,11 +52,11 @@
         //},
     ];
 
-    $: console.log("testing");
+    $: console.log("index: ", index);
     $: show = index === 0 ? "manhattan" : "harlem";
     $: currentState = index !== undefined ? steps[index].mapState : null;
 
-    // $: console.log(currentState);
+    $: console.log("currentState: ", currentState);
 </script>
 
 <div class="demo">
@@ -71,7 +70,7 @@
         bind:progress
     >
         <div slot="background">
-            <!-- <Map {show} {currentState}/> -->
+            <Map {show} {currentState}/>
         </div>
 
         <div slot="foreground" style="padding: 0 0 0 50%;">
