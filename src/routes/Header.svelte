@@ -1,129 +1,62 @@
-<script lang="ts">
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+<script>
+
+
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://svelte.dev/docs/kit">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
+<main class="header">
+    <div class="header-content-wrapper">
+    <h1>Unpacking Gentrification in Harlem</h1>
+    <h3>Experiences and Perspectives from Young New Yorkers Who Are Living Through It</h3>
+    <p> <b>Gentrification</b>, described as a process involving neighborhood demographic transitions from working-class and often socially marginalized people to higher class and often non-marginalized people, changes both the physical and social landscapes of communities. Given historically segregated American residential structures and disinvestment in communities of color, gentrification predominantly occurs along racial lines in the United States.  White gentrifiers displace Black and Brown residents.  As a result, a neighborhood’s culture and identity are altered.<br><br>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
+    Interested in unpacking this phenomenon a bit, we sat down with the summer 2024 Community Service Learning Initiative cohort hosted by Another Choice Youth and Family Outreach.  We wanted to try and figure out how these changes in landscape, culture, and identity were understood and experienced by the young people living it all. We focus on East Harlem, a New York City community that is being impacted by ceaseless change. <br><br>
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
-</header>
+    Scroll below to experience East Harlem through the artistic narratives of these young residents.
+
+        </p>
+    </div>
+</main>
 
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
+    .header-content-wrapper {
+        
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 0 50px;
+    }
+    .header h1 {
+        /* height: 100vh;
+        width: 100vw; */
+        height: 15vh;
+    
+        font-family:'Lora', sans-serif;
+        font-size: 3.5 em;
+        font-weight: 600;
+        text-align: center;
+        text-transform: uppercase;
+        color:white
+    }
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
+    .header h3 {
+        /* height: 100vh;
+        width: 100vw; */
+        font-family:'Lora', sans-serif;
+        font-size: 1.5em;
+        font-weight: 200;
+        text-align: center;
+     
+        color:white;
+    }
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
+    .header p {
+        /* height: 100vh;
+        width: 100vw; */
+        font-family:'Lora', serif;
+        
+      
+        text-align: justify;
+    
+        color:rgb(242, 242, 233);
+    }
 
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--color-theme-1);
-	}
 </style>

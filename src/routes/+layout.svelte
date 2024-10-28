@@ -1,24 +1,14 @@
 <script lang="ts">
 	import Header from './Header.svelte';
 	import '../app.css';
+	import Scroller from './Scroller.svelte';
 
 	let { children } = $props();
 	console.log("testing")
 </script>
-
-<div class="app">
 	<Header />
+	<Scroller />
 
-	<main>
-		{@render children()}
-	</main>
-
-	<footer>
-		<p>
-			visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to learn about SvelteKit
-		</p>
-	</footer>
-</div>
 
 <style>
 	.app {
