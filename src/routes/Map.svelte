@@ -4,6 +4,7 @@
 
 	export let show;
 	export let currentState;
+    export let showMarker;
 
 	$: console.log(currentState);
 
@@ -14,8 +15,8 @@
 
 	mapboxgl.accessToken = MAPBOX_TOKEN;
 
+    let marker; //marker for 125th street station
 	let map;
-	let marker; //marker for 125th street station
 
 	onMount(() => {
 		// Initialize Mapbox
@@ -25,11 +26,18 @@
 			style: 'mapbox://styles/mapbox/dark-v10',
 			center: [-74.006, 40.7128],
 			zoom: 10,
-			interactive: false
+			interactive: false,
+           
 		});
 
 		// create marker but don't show it yet
-		marker = new mapboxgl.Marker().setLngLat([-73.9374, 40.8044]).addTo(map);
+		marker = new mapboxgl.Marker({
+            color: 'teal',
+            // scale: 1.5, 
+        })
+        .setLngLat([-73.9374, 40.8044]);
+        //		marker = new mapboxgl.Marker().setLngLat([-73.9374, 40.8044]).addTo(map);
+
 	});
 
 	// add or remove marker based on the step
@@ -41,14 +49,21 @@
 			// essential: true,
 		);
 
-		if (map.getCenter().lng === -73.9373 && map.getCenter().lat === 40.8044) {
-			marker.addTo(map);
-		} else {
-			marker.remove(map);
-		}
+        if (showMarker) {
+            marker.addTo(map);
+        } else {
+            marker.remove();
+        }
+
+		// if (map.getCenter().lng === -73.9373 && map.getCenter().lat === 40.8044) {
+		// 	marker.addTo(map);
+		// } else {
+		// 	marker.remove();
+		// }
 	}
 
-	$: console.log('map', map);
+	// $: console.log('map', map);
+    $: console.log('marker: ', marker);
 </script>
 
 <div id="map"></div>

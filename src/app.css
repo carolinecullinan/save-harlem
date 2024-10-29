@@ -24,6 +24,13 @@ body {
 	background-size: 100vw 100vh;
 }
 
+/* .mapboxgl-marker {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: red !important;
+} */
+
 h1,
 h2,
 p {
