@@ -14,24 +14,23 @@
     const steps = [
         {
             class: "hidden",
-            content: `
-        <p>intro</p>
-      `,
+            content: `p>intro</p>`,
             mapState: {
                 center: [-73.9656, 40.7826],
                 zoom: 10,
             },
-            showMarker: false
+            showMarker: false,
+            showStreet: false
         },
         {
             class: "visible",
             content: "<p>Our story begins at the 125 St Subway Station, located at the interesection of Lexington Avenue and what is now officially co-named Dr Martin Luther King Jr Boulevard.</p>",
             mapState: {
                 center: [-73.9656, 40.7826],
-                //-74.006, 40.7128
                 zoom: 10,
             },
-            showMarker: false
+            showMarker: false,
+            showStreet: false
         },
         {
             class: "visible",
@@ -40,18 +39,17 @@
                 center: [-73.9373, 40.8044],
                 zoom: 14,
             },
-            showMarker: true
-
-            
+            showMarker: true,
+            showStreet: true   
         },
-
         {
             class: "visible",
             content: "<p>More text More text...</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
             },
-            showMarker: true
+            showMarker: true,
+            showStreet: false
         },
         // {
         //     class: "visible",
@@ -69,6 +67,8 @@
     $: show = index === 0 ? "manhattan" : "harlem";
     $: currentState = index !== undefined ? steps[index].mapState : null;
     $: showMarker = index !== undefined ? steps[index].showMarker : false;
+    $: showStreet = index !== undefined ? steps[index].showStreet : false;
+
 
     // $: console.log("currentState: ", currentState);
     // $: console.log("showMarker: ", showMarker);
@@ -85,7 +85,7 @@
         bind:progress
     >
         <div slot="background">
-            <Map {show} {currentState} {showMarker}/>
+            <Map {show} {currentState} {showMarker} {showStreet} />
         </div>
 
         <div slot="foreground" style="padding: 0 0 0 50%;">
