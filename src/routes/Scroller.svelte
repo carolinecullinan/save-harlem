@@ -63,7 +63,43 @@
                 center: [-73.9373, 40.8044],
                 zoom: 13
             },
-            showMarker: true,
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true
+        },
+
+        {
+            class: "visible",
+            content: "<p> Today, East Harlem is still mostly Black, Puerto Rican, and immigrant families. Local groups are still fighting for the community’s rights. But things are starting to look different around here.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 13
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true
+        },
+       
+        {
+            class: "visible",
+            content: "<p> Today, East Harlem is still mostly Black, Puerto Rican, and immigrant families. Local groups are still fighting for the community’s rights. But things are starting to look different around here.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 13
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true
+        },
+
+        {
+            class: "visible",
+            content: "<p>Don’t just take our word for it, take it from <b>Tihanna</b>.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 13
+            },
+            showMarker: false,
             showStreet: false,
             showEastHarlem: true
         },
