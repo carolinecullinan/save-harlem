@@ -25,7 +25,7 @@
         },
         {
             class: "visible",
-            content: "<p>Our story begins at the 125 St Subway Station.</p>",
+            content: "<p>Our story begins at the <b>125 St Subway Station</b>.</p>",
             mapState: {
                 center: [-73.9656, 40.7826],
                 zoom: 10,
@@ -36,7 +36,7 @@
         },
         {
             class: "visible",
-            content: "<p> Historically significant, this subway station sits right where Lexington Avenue meets what’s now officially co-named Dr Martin Luther King Jr Boulevard.</p>",
+            content: "<p> Historically significant, this subway station sits right where Lexington Avenue meets what’s now officially co-named <b>Dr Martin Luther King Jr Boulevard</b>.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
                 zoom: 14,
@@ -118,6 +118,7 @@
     .text-block {
         width: 100%;
         border: 1px solid rgb(242, 242, 233);
+        background-color: black;
         padding: 10px;
     }
 
