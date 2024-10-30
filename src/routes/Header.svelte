@@ -7,12 +7,12 @@
     <div class="header-content-wrapper">
     <h1>Unpacking Gentrification in Harlem</h1>
     <h3>Experiences and Perspectives from Young New Yorkers Who Are Living Through It</h3>
-    <p> <b>Gentrification</b>, described as a process involving neighborhood demographic transitions from working-class and often socially marginalized people to higher class and often non-marginalized people, changes both the physical and social landscapes of communities. Given historically segregated American residential structures and disinvestment in communities of color, gentrification predominantly occurs along racial lines in the United States.  White gentrifiers displace Black and Brown residents.  As a result, a neighborhood’s culture and identity are altered.<br><br>
+    <p> When a neighborhood changes, it usually means that working-class families get pushed out by wealthier folks moving in. This process is often described as <b>“gentrification”</b>. In the United States, given histories of segregation and disinvestment in communities of color, this <b>gentrification</b> usually happens along racial lines. Simply put, white people with money move in, and Black and Brown residents who have lived in a place for generations get forced out. When this happens, the whole feel of a neighborhood - its culture, its personality, and its soul - starts to change.<br><br>
 
-    Interested in unpacking this phenomenon a bit, we sat down with the summer 2024 Community Service Learning Initiative cohort hosted by Another Choice Youth and Family Outreach.  We wanted to try and figure out how these changes in landscape, culture, and identity were understood and experienced by the young people living it all. We focus on East Harlem, a New York City community that is being impacted by ceaseless change. <br><br>
-
-    Scroll below to experience East Harlem through the artistic narratives of these young residents.
-
+        We wanted to understand what this looks like through the eyes of young people living through it all right now. So we sat down with the summer 2024 Community Service Learning Initiative cohort hosted by Another Choice Youth and Family Outreach. We focused on <b>East Harlem</b>, where these changes are happening day by day.<br><br>
+        
+        Keep scrolling to see <b>East Harlem</b> through the eyes of young people who call it home.
+        
         </p>
     </div>
 </main>
