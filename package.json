@@ -26,6 +26,7 @@
 	},
 	"dependencies": {
 		"@sveltejs/svelte-scroller": "^2.0.7",
+		"lucide-svelte": "^0.454.0",
 		"mapbox-gl": "^3.7.0"
 	}
 }

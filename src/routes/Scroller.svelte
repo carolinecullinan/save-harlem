@@ -1,6 +1,7 @@
 <script>
     import Scroller from "@sveltejs/svelte-scroller";
     import Map from "./Map.svelte";
+    import Sticker from "./Sticker.svelte";
    
 
     let count;
@@ -21,7 +22,8 @@
             },
             showMarker: false,
             showStreet: false,
-            showEastHarlem: false
+            showEastHarlem: false,
+            showSticker: false
         },
         {
             class: "visible",
@@ -32,7 +34,8 @@
             },
             showMarker: false,
             showStreet: false,
-            showEastHarlem: false
+            showEastHarlem: false,
+            showSticker: false
         },
         {
             class: "visible",
@@ -43,7 +46,8 @@
             },
             showMarker: true,
             showStreet: false,
-            showEastHarlem: false 
+            showEastHarlem: false,
+            showSticker: false
         },
         {
             class: "visible",
@@ -53,7 +57,8 @@
             },
             showMarker: true,
             showStreet: true,
-            showEastHarlem: false
+            showEastHarlem: false,
+            showSticker: false
         },
 
         {
@@ -65,7 +70,8 @@
             },
             showMarker: false,
             showStreet: false,
-            showEastHarlem: true
+            showEastHarlem: true,
+            showSticker: false
         },
 
         {
@@ -77,7 +83,8 @@
             },
             showMarker: false,
             showStreet: false,
-            showEastHarlem: true
+            showEastHarlem: true,
+            showSticker: false
         },
 
         {
@@ -89,7 +96,25 @@
             },
             showMarker: false,
             showStreet: false,
-            showEastHarlem: true
+            showEastHarlem: true,
+            showSticker: false
+        },
+        {
+            class: "hidden",
+            content: "<p> </p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: true,
+            artist: {
+                name: "Artist Name",
+                artworkSrc: "/images/1.jpg",
+                audioSrc: "https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3",
+            }
         },
         // {
         //     class: "visible",
@@ -109,6 +134,8 @@
     $: showMarker = index !== undefined ? steps[index].showMarker : false;
     $: showStreet = index !== undefined ? steps[index].showStreet : false;
     $: showEastHarlem = index !== undefined ? steps[index].showEastHarlem : false;
+    $: showSticker = index !== undefined ? steps[index].showSticker : false;
+    $: artist = index !== undefined ? steps[index].artist : null;
 
     // $: console.log("currentState: ", currentState);
     // $: console.log("showMarker: ", showMarker);
@@ -126,6 +153,14 @@
     >
         <div slot="background">
             <Map {show} {currentState} {showMarker} {showStreet} {showEastHarlem} />
+            {#if showSticker && artist}
+                <Sticker
+                artist={artist.name}
+                artworkSrc={artist.artworkSrc}
+                audioSrc={artist.audioSrc}
+                position={{top: '20%', left: '20%'}}
+                />
+            {/if}
         </div>
 
         <div slot="foreground" style="padding: 0 0 0 50%;">
