@@ -113,7 +113,7 @@
             artist: {
                 name: "TIHANNA",
                 artworkSrc: "/images/1.jpg",
-                audioSrc: "https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3",
+                audioSrc: "/audio/1.mp3",
             }
         },
         // {
