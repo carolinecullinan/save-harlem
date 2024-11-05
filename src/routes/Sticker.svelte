@@ -4,7 +4,7 @@
     export let artist;
     export let artworkSrc;
     export let audioSrc;
-    export let position = { top: '20%', left: '20%' };
+    export let position = { top: '0%', left: '50%' };
     export let onClose = () => {};
 
     let isPlaying = false;
@@ -54,7 +54,7 @@
     }
 </script>
 
-<div class="sticker" style="top: {position.top}; left: {position.left}">
+<div class="sticker" style="top: {position.center}; left: {position.center}; transform: translateX(-50%)">
     <!-- Artist Info & Artwork -->
     <div class="content">
         <h3 class="title">{artist}</h3>
@@ -120,12 +120,17 @@
     .sticker {
         position: fixed;
         z-index: 50;
-        width: 80%;
+        width: 90vw;
+        max-width: 1200px;
         background: black;
         backdrop-filter: blur(8px);
         border-radius: 8px;
         /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
         transition: all 0.3s ease-in-out;
+        /* center the sticker */
+        left: 50%;
+        transform: translateX(-50%);
+        top: 5% /* position from top of screen */
     }
 
     .content {
@@ -133,15 +138,17 @@
     }
 
     .title {
-        font-size: 1.125rem;
+        font-size: 1.5rem;
         font-weight: bold;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        color: white /* added to ensure text visble on black background */
     }
 
     .artwork {
         width: 100%;
-        height: 12rem;
-        object-fit: cover;
+        height: auto;
+        max-height: 60vh;
+        object-fit: contain;
         border-radius: 0.375rem;
         margin-bottom: 1rem;
     }

@@ -111,7 +111,7 @@
             showEastHarlem: true,
             showSticker: true,
             artist: {
-                name: "Artist Name",
+                name: "TIHANNA",
                 artworkSrc: "/images/1.jpg",
                 audioSrc: "https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3",
             }
