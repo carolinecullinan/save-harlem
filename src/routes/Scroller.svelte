@@ -89,7 +89,7 @@
 
         {
             class: "visible",
-            content: "<p>Don’t just take our word for it, take it from <b>Tihanna</b>.</p>",
+            content: "<p>Don’t just take our word for it though, take it from <b>Tihanna</b>.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
                 zoom: 14
@@ -116,16 +116,49 @@
                 audioSrc: "/audio/1.mp3",
             }
         },
-        // {
-        //     class: "visible",
-        //     content:
-        //         "<p>The 125th Street Station area has seen significant changes...</p>",
-        //     mapState: {
-        //         center: [-73.9369, 40.8044],
-        //         zoom: 16,
-        //     },
-            
-        //},
+        {
+            class: "visible",
+            content: "<p>Sadly, the numbers back up what Tihanna sees. In just the last few years, median rents in East Harlem have shot up faster than almost anywhere else in Manhattan. According to city data, from 2019 to 2022 the median asking rent in the neighborhood increased by almost 20%.  At the same time, East Harlem has some of the highest rates of eviction and homelessness in the city. Meanwhile, new “luxury” buildings keep popping up.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: false
+        },
+        {
+            class: "visible",
+            content: "<p>Bailey can tell you all about it.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: false
+        },
+
+        {
+            class: "hidden",
+            content: "<p> </p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: true,
+            artist: {
+                name: "BAILEY",
+                artworkSrc: "/images/2.jpg",
+                audioSrc: "/audio/2.mp3",
+            }
+        },
+
     ];
 
     $: console.log("index: ", index);
