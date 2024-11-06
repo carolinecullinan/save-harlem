@@ -153,32 +153,75 @@
     >
         <div slot="background">
             <Map {show} {currentState} {showMarker} {showStreet} {showEastHarlem} />
-            {#if showSticker && artist}
-                <Sticker
-                artist={artist.name}
-                artworkSrc={artist.artworkSrc}
-                audioSrc={artist.audioSrc}
-                position={{top: '20%', left: '20%'}}
-                />
-            {/if}
         </div>
 
-        <div slot="foreground" style="padding: 0 0 0 50%;">
-            {#each steps as step, i}
-                <section class={step.class}>
+        <div slot="foreground">
+            <!-- Text content on the left -->
+             <div class = "text-column">
+                {#each steps as step, i}
+                    <section class={step.class}>
                     <div class="text-block">{@html step.content}</div>
                 </section>
-            {/each}
+                {/each}
+            </div>
+
+            <!-- Sticker overlay in the center-->
+            {#if showSticker && artist}
+                <div class="sticker-overlay">
+                    <Sticker
+                        artist={artist.name}
+                        artworkSrc={artist.artworkSrc}
+                        audioSrc={artist.audioSrc}
+                    />
+                </div>
+            {/if}
         </div>
     </Scroller>
 </div>
 
 <style>
+
+    .text-column {
+        width: 50%;
+        padding-left: 50%;
+    }
+    
+    .sticker-overlay {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        /* make sure it is clickable */
+        pointer-events: all;
+    }
     .text-block {
         width: 100%;
         border: 1px solid rgb(242, 242, 233);
         background-color: black;
         padding: 10px;
+    }
+
+    .demo {
+        padding: 0;
+    }
+
+    [slot="background"] {
+        background-color: rgba(255, 62, 0, 0.05);
+        border-top: 2px solid white;
+        border-bottom: 2px solid white;
+        font-size: 1.4em;
+        overflow: hidden;
+    }
+
+    section {
+        height: 100vh;
+        color: white;
+        padding: 1em;
+        margin: 0 0 2em 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .hidden {

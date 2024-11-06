@@ -1,208 +1,285 @@
 <script>
-    import { Play, Pause, Volume2, VolumeX } from "lucide-svelte";
+    import { onMount, onDestroy } from 'svelte';
+    import { Play, Pause, Volume2, VolumeX, Loader } from "lucide-svelte";
     
     export let artist;
     export let artworkSrc;
     export let audioSrc;
-    export let position = { top: '0%', left: '50%' };
-    export let onClose = () => {};
-
+    
+    let audio;
     let isPlaying = false;
     let currentTime = 0;
     let duration = 0;
-    let isMuted = false;
-    let audio;
-
-    function handleLoadedMetadata() {
-        duration = audio.duration;
-    }
-
-    function handleTimeUpdate() {
-        currentTime = audio.currentTime;
-    }
-
-    function togglePlay() {
-        if (audio) {
-            if (isPlaying) {
+    let isLoading = true;
+    let loadError = null;
+    let playAttempted = false;
+    
+    onMount(() => {
+        console.log('Sticker mounted with audio source:', audioSrc);
+        
+        try {
+            audio = new Audio(audioSrc);
+            
+            audio.addEventListener('play', () => {
+                console.log('Play event fired');
+                isPlaying = true;
+                isLoading = false;
+            });
+    
+            audio.addEventListener('pause', () => {
+                console.log('Pause event fired');
+                isPlaying = false;
+                isLoading = false;
+            });
+    
+            audio.addEventListener('loadeddata', () => {
+                console.log('Audio data loaded successfully');
+                isLoading = false;
+            });
+    
+            audio.addEventListener('loadedmetadata', () => {
+                console.log('Audio metadata loaded, duration:', audio.duration);
+                duration = audio.duration;
+                isLoading = false;
+            });
+            
+            audio.addEventListener('timeupdate', () => {
+                currentTime = audio.currentTime;
+            });
+            
+            audio.addEventListener('error', (e) => {
+                console.error('Audio error:', {
+                    error: audio.error,
+                    code: audio.error?.code,
+                    message: audio.error?.message,
+                    state: audio.readyState
+                });
+                loadError = `Audio error: ${audio.error?.message || 'Unknown error'}`;
+                isLoading = false;
+            });
+    
+            audio.addEventListener('playing', () => {
+                console.log('Audio is now playing');
+                isPlaying = true;
+                isLoading = false;
+            });
+    
+            audio.addEventListener('waiting', () => {
+                console.log('Audio is waiting');
+                isLoading = true;
+            });
+    
+            audio.preload = 'auto';
+            audio.load();
+    
+        } catch (error) {
+            console.error('Error initializing audio:', error);
+            loadError = `Error initializing audio: ${error.message}`;
+            isLoading = false;
+        }
+        
+        return () => {
+            if (audio) {
                 audio.pause();
-            } else {
-                audio.play();
+                audio.removeEventListener('play', () => {});
+                audio.removeEventListener('pause', () => {});
+                audio.removeEventListener('loadeddata', () => {});
+                audio.removeEventListener('loadedmetadata', () => {});
+                audio.removeEventListener('timeupdate', () => {});
+                audio.removeEventListener('error', () => {});
+                audio.removeEventListener('playing', () => {});
+                audio.removeEventListener('waiting', () => {});
+                audio = null;
             }
-            isPlaying = !isPlaying;
+        };
+    });
+    
+    async function togglePlay() {
+        console.log('Toggle play clicked');
+        console.log('Current state:', { isPlaying, isLoading, playAttempted });
+        
+        if (!audio || isLoading) {
+            console.log('Cannot play: audio not ready or loading');
+            return;
+        }
+    
+        try {
+            if (isPlaying) {
+                console.log('Attempting to pause');
+                await audio.pause();
+                isPlaying = false;
+            } else {
+                console.log('Attempting to play');
+                isLoading = true;
+                playAttempted = true;
+    
+                try {
+                    const playPromise = audio.play();
+                    if (playPromise !== undefined) {
+                        await playPromise;
+                        console.log('Play promise resolved successfully');
+                    } else {
+                        console.log('Play initiated without promise');
+                    }
+                } catch (playError) {
+                    console.error('Play error:', playError);
+                    loadError = `Play error: ${playError.message}`;
+                    isPlaying = false;
+                }
+            }
+        } catch (error) {
+            console.error('Toggle play error:', error);
+            loadError = `Playback error: ${error.message}`;
+            isPlaying = false;
+        } finally {
+            isLoading = false;
         }
     }
-
-    function toggleMute() {
-        if (audio) {
-            audio.muted = !isMuted;
-            isMuted = !isMuted;
-        }
-    }
-
-    function handleSeek(e) {
-        const seekTime = (e.offsetX / e.target.offsetWidth) * duration;
-        if (audio) {
-            audio.currentTime = seekTime;
-            currentTime = seekTime;
-        }
-    }
-
+    
     function formatTime(time) {
         const minutes = Math.floor(time / 60);
         const seconds = Math.floor(time % 60);
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
-</script>
-
-<div class="sticker" style="top: {position.center}; left: {position.center}; transform: translateX(-50%)">
-    <!-- Artist Info & Artwork -->
-    <div class="content">
-        <h3 class="title">{artist}</h3>
-        <img 
-            src={artworkSrc} 
-            alt="Artwork by {artist}" 
-            class="artwork"
-        />
-    </div>
-
-    <!-- Audio Player -->
-    <div class="audio-player">
-        <audio 
-            bind:this={audio}
-            src={audioSrc}
-            on:loadedmetadata={handleLoadedMetadata}
-            on:timeupdate={handleTimeUpdate}
-        />
-        
-        <!-- Progress Bar -->
-        <div 
-            class="progress-bar"
-            on:click={handleSeek}
-        >
-            <div 
-                class="progress"
-                style="width: {(currentTime / duration) * 100}%"
+    
+    onDestroy(() => {
+        if (audio) {
+            audio.pause();
+            audio = null;
+        }
+    });
+    </script>
+    
+    <div class="sticker">
+        <div class="content">
+            <h3 class="title">{artist}</h3>
+            <img 
+                src={artworkSrc} 
+                alt="Artwork by {artist}" 
+                class="artwork"
             />
         </div>
-        
-        <!-- Controls -->
-        <div class="controls">
-            <div class="buttons">
-                <button 
+    
+        <div class="audio-player">
+            {#if loadError}
+                <div class="error-message">
+                    {loadError}
+                </div>
+            {/if}
+    
+            <div class="controls-container">
+                <button
+                    class="play-button"
                     on:click={togglePlay}
-                    class="control-button"
+                    disabled={isLoading}
                 >
-                    {#if isPlaying}
-                        <Pause size={24} />
+                    {#if isLoading}
+                        <Loader class="spin" />
+                    {:else if isPlaying}
+                        <Pause />
                     {:else}
-                        <Play size={24} />
+                        <Play />
                     {/if}
                 </button>
-                <button 
-                    on:click={toggleMute}
-                    class="control-button"
-                >
-                    {#if isMuted}
-                        <VolumeX size={24} />
-                    {:else}
-                        <Volume2 size={24} />
-                    {/if}
-                </button>
+    
+                <div class="player-controls">
+                    <div class="time-display">
+                        {formatTime(currentTime)} / {formatTime(duration)}
+                    </div>
+                </div>
             </div>
-            <div class="time">
-                {formatTime(currentTime)} / {formatTime(duration)}
+    
+            <!-- Debug info -->
+            <div class="debug-info" style="color: #666; font-size: 12px; margin-top: 8px;">
+                Status: {isPlaying ? 'Playing' : 'Paused'} | 
+                Loading: {isLoading ? 'Yes' : 'No'} | 
+                Duration: {duration}s
             </div>
         </div>
     </div>
-</div>
-
-<style>
-    .sticker {
-        position: fixed;
-        z-index: 50;
-        width: 90vw;
-        max-width: 1200px;
-        background: black;
-        backdrop-filter: blur(8px);
-        border-radius: 8px;
-        /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-        transition: all 0.3s ease-in-out;
-        /* center the sticker */
-        left: 50%;
-        transform: translateX(-50%);
-        top: 5% /* position from top of screen */
-    }
-
-    .content {
-        padding: 1rem;
-    }
-
-    .title {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-        color: white /* added to ensure text visble on black background */
-    }
-
-    .artwork {
-        width: 100%;
-        height: auto;
-        max-height: 60vh;
-        object-fit: contain;
-        border-radius: 0.375rem;
-        margin-bottom: 1rem;
-    }
-
-    .audio-player {
-        padding: 1rem;
-        background: rgba(249, 250, 251, 0.9);
-        border-radius: 0 0 8px 8px;
-    }
-
-    .progress-bar {
-        height: 0.5rem;
-        background: #e5e7eb;
-        border-radius: 9999px;
-        margin-bottom: 0.5rem;
-        cursor: pointer;
-    }
-
-    .progress {
-        height: 100%;
-        background: #3b82f6;
-        border-radius: 9999px;
-        transition: width 0.1s ease;
-    }
-
-    .controls {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .buttons {
-        display: flex;
-        gap: 0.5rem;
-    }
-
-    .control-button {
-        padding: 0.5rem;
-        border-radius: 9999px;
-        transition: background-color 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
-
-    .control-button:hover {
-        background-color: #e5e7eb;
-    }
-
-    .time {
-        font-size: 0.875rem;
-        color: #4b5563;
-    }
-</style>
+    
+    <style>
+        .sticker {
+            width: 90vw;
+            max-width: 600px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            /* Removed position: fixed and transform since it's handled by parent */
+        }
+    
+        .content {
+            padding: 1.5rem;
+        }
+    
+        .title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+    
+        .artwork {
+            width: 100%;
+            height: auto;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+    
+        .audio-player {
+            padding: 1.5rem;
+            background: #262626;
+            border-radius: 0 0 12px 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    
+        .error-message {
+            color: #ef4444;
+            margin-bottom: 1rem;
+        }
+    
+        .controls-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    
+        .play-button {
+            background: #4a4a4a;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .play-button:hover:not(:disabled) {
+            background: #666;
+        }
+    
+        .play-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    
+        .time-display {
+            color: white;
+            font-variant-numeric: tabular-nums;
+        }
+    
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+    
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
