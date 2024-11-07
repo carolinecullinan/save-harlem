@@ -140,7 +140,6 @@
             showEastHarlem: true,
             showSticker: false
         },
-
         {
             class: "hidden",
             content: "<p> </p>",
@@ -156,6 +155,76 @@
                 name: "BAILEY",
                 artworkSrc: "/images/2.jpg",
                 audioSrc: "/audio/2.mp3",
+            }
+        },
+        {
+            class: "visible",
+            content: "<p>And Bailey isn’t the only one who is noticing the new apartment buildings for new and richer people. Elyssa sees it too - and knows that Harlem needs saving.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: false
+        },  
+        {
+            class: "hidden",
+            content: "<p> </p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: true,
+            artist: {
+                name: "ELYSSA",
+                artworkSrc: "/images/3.jpg",
+                audioSrc: "/audio/3.mp3",
+            }
+        },
+        {
+            class: "visible",
+            content: "<p>According to the data, East Harlem has lost more than one in five of its small businesses along 116th Street and Third Avenue. That’s family-owned shops that had been here for generations, gone. Meanwhile, the number of chain stores between 96th and 125th Street has shot up by 35% - the biggest jump in the whole city.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: false
+        },
+        {
+            class: "visible",
+            content: "<p>None of this is okay. Sanaa knows it too, and she isn’t afraid to say it how it is: they are rebranding the whole town.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: false
+        },
+        {
+            class: "hidden",
+            content: "<p> </p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: true,
+            artist: {
+                name: "Sanaa",
+                artworkSrc: "/images/4.jpg",
+                audioSrc: "/audio/4.mp3",
             }
         },
 
