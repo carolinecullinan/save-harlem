@@ -227,6 +227,18 @@
                 audioSrc: "/audio/4.mp3",
             }
         },
+        {
+            class: "visible",
+            content: "<p>Young people in East Harlem understand exactly what’s happening to their neighborhood. Maybe it’s time that we listen to them.</p>",
+            mapState: {
+                center: [-73.9373, 40.8044],
+                zoom: 14
+            },
+            showMarker: false,
+            showStreet: false,
+            showEastHarlem: true,
+            showSticker: false
+        },
 
     ];
 
