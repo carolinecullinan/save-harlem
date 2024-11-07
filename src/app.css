@@ -1,12 +1,12 @@
-/* @import '@fontsource/fira-mono'; */
+@import '@fontsource/rubik/400.css';  /* Regular */
+@import '@fontsource/rubik/700.css';  /* Bold */
+@import '@fontsource/inter/400.css';  /* Regular */
+@import '@fontsource/inter/500.css';  /* Medium */
 
 :root {
-	--font-body: BWHaasDingbat, PublicoText, Publico Text Web, Georgia, Cambria, Times New Roman, Times, serif;
-	/* --font-mono: 'Fira Mono', monospace; */
-	--font-mono: 'Fira Mono', monospace;
-	/* --color-bg-0: rgb(0, 0, 0);
-	--color-bg-1: rgb(0, 0, 0);;
-	--color-bg-2: rgb(0, 0, 0);; */
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-headers: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Fira Mono', monospace;
 	--color-theme-1: rgb(170, 10, 119);
 	--color-theme-2: #4075a6;
 	--color-text: rgb(242, 242, 233);
@@ -20,7 +20,7 @@ body {
 	min-height: 100vh;
 	margin: 0;
 	background-attachment: fixed;
-	background-color: rgb(0, 0, 0);;
+	background-color: #191a1a;
 	background-size: 100vw 100vh;
 }
 

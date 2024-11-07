@@ -34,7 +34,7 @@
         font-weight: 600;
         text-align: center;
         text-transform: uppercase;
-        color:white
+        color:#bcbcbc
     }
 
     .header h3 {

@@ -311,8 +311,8 @@
     }
     .text-block {
         width: 100%;
-        border: 1px solid rgb(242, 242, 233);
-        background-color: black;
+        border: 1px solid #bcbcbc;
+        background-color: #2d2d2d; /* #191a1a; */
         padding: 10px;
     }
 
