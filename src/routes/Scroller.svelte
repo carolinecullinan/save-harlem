@@ -63,7 +63,7 @@
 
         {
             class: "visible",
-            content: "<p>Take <b>East Harlem</b> for instance. This neighborhood knows all about standing up for what’s right. Traditionally home to Black, Puerto Rican, and immigrant families, East Harlem has never been afraid to speak up. Back in the ‘60s and ‘70s, groups like the Black Panthers Party and the Young Lords Party got together right here to fight for better healthcare, better schools, and better housing.</p>",
+            content: "<p>Take <b>East Harlem</b> for instance. Also known as <b> El Barrio</b> or <b>Spanish Harlem</b>, this neighborhood knows all about standing up for what’s right. Traditionally home to Black, Puerto Rican, and immigrant families, East Harlem has never been afraid to speak up. Back in the ‘60s and ‘70s, groups like the Black Panthers Party and the Young Lords Party got together right here to fight for better healthcare, better schools, and better housing.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
                 zoom: 13
@@ -76,7 +76,7 @@
 
         {
             class: "visible",
-            content: "<p> Today, East Harlem is still mostly Black, Puerto Rican, and immigrant families. Local groups are still fighting for the community’s rights. But things are starting to look different around here.</p>",
+            content: "<p> Today, East Harlem is still mostly Black, Puerto Rican, and immigrant families. Local groups are still fighting for the community’s rights. But things are also starting to look different around here.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
                 zoom: 13
@@ -311,7 +311,7 @@
     }
     .text-block {
         width: 100%;
-        border: 1px solid #bcbcbc;
+        border: 1px solid #d2d1d1;
         background-color: #2d2d2d; /* #191a1a; */
         padding: 10px;
     }
@@ -322,15 +322,15 @@
 
     [slot="background"] {
         background-color: rgba(255, 62, 0, 0.05);
-        border-top: 2px solid white;
-        border-bottom: 2px solid white;
+        border-top: 2px solid #d2d1d1;
+        border-bottom: 2px solid #d2d1d1;
         font-size: 1.4em;
         overflow: hidden;
     }
 
     section {
         height: 100vh;
-        color: white;
+        color: #d2d1d1;
         padding: 1em;
         margin: 0 0 2em 0;
         display: flex;
@@ -352,8 +352,8 @@
 
     [slot="background"] {
         background-color: rgba(255, 62, 0, 0.05);
-        border-top: 2px solid white;
-        border-bottom: 2px solid white;
+        border-top: 2px solid #d2d1d1;
+        border-bottom: 2px solid #d2d1d1;
         font-size: 1.4em;
         overflow: hidden;
         /* padding: 1em; */
@@ -374,7 +374,7 @@
     section {
         height: 100vh;
         /* // background-color: black; */
-        color: white;
+        color: #d2d1d1;
         padding: 1em;
         margin: 0 0 2em 0;
         display: flex;

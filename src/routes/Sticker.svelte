@@ -190,11 +190,11 @@
             </div>
     
             <!-- Debug info -->
-            <div class="debug-info" style="color: #666; font-size: 12px; margin-top: 8px;">
+            <!-- <div class="debug-info" style="color: #666; font-size: 12px; margin-top: 8px;">
                 Status: {isPlaying ? 'Playing' : 'Paused'} | 
                 Loading: {isLoading ? 'Yes' : 'No'} | 
                 Duration: {duration}s
-            </div>
+            </div> -->
         </div>
     </div>
     
@@ -216,7 +216,7 @@
             font-size: 1.75rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            color: white;
+            color: #d2d1d1;
         }
     
         .artwork {
@@ -247,9 +247,9 @@
         }
     
         .play-button {
-            background: #4a4a4a;
+            background: #3b3939;
             border: none;
-            color: white;
+            color: #d2d1d1;
             cursor: pointer;
             padding: 0.5rem;
             border-radius: 50%;
@@ -270,7 +270,7 @@
         }
     
         .time-display {
-            color: white;
+            color: #d2d1d1;
             font-variant-numeric: tabular-nums;
         }
     

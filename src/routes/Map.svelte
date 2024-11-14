@@ -158,7 +158,7 @@
 
 		// create marker but don't show it yet
 		marker = new mapboxgl.Marker({
-            color: 'teal',
+            color: '#FF9B00',
         }).setLngLat([-73.9374, 40.8044]);
 
 		// create streetHighlight_main but don't show it yet
