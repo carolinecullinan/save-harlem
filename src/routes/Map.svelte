@@ -7,6 +7,8 @@
     export let showMarker;
 	export let showStreet;
 	export let showEastHarlem;
+	export let showDollarSigns = false;
+
 
 	$: console.log(currentState);
 
@@ -18,8 +20,57 @@
 	let streetHighlight_main; // highlight for 125th St / MLK Jr Blvd
 	let streetHighlight_diagonal; // highlight for diagonal portion of 125th St
 	let eastHarlemHighlight; // highlight for East Harlem
+	let dollarSigns; // dollar signs for rent prices
 	let map;
 
+	class DollarSignsOverlay {
+    constructor() {
+        this.markers = [];
+    }
+
+    addTo(map) {
+        this.remove();
+
+        // Array of specific coordinates for East Harlem
+        const coordinates = [
+            [-73.94313, 40.80257], // Replace these with your 15 coordinate pairs
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003], // Replace with actual coordinate
+            [-73.9389, 40.8003]  // Replace with actual coordinate
+        ];
+
+        coordinates.forEach(([lng, lat]) => {
+            const el = document.createElement('div');
+            el.className = 'dollar-sign';
+            el.textContent = '$';
+
+            const marker = new mapboxgl.Marker({
+                element: el,
+                anchor: 'center'
+            })
+            .setLngLat([lng, lat])
+            .addTo(map);
+
+            this.markers.push(marker);
+        });
+    }
+
+    remove() {
+        this.markers.forEach(marker => marker.remove());
+        this.markers = [];
+    }
+}
 
 	// create a street highlight object (similar to marker)
 	class StreetHighlight {
@@ -185,16 +236,25 @@
 		eastHarlemHighlight = new EastHarlemHighlight({
 			coordinates: [
 				[-73.9326, 40.7857],  // SE - Near 96th St & FDR Drive
-				[-73.9323, 40.8016],  // E - Near 116th St & FDR Drive
-				[-73.9321, 40.8127],  // NE - Near Harlem River Drive
-				[-73.9387, 40.8183],  // N - Near 142nd St
-				[-73.9470, 40.8179],  // NW - Near 5th Ave & 142nd St
-				[-73.9589, 40.7947],  // SW - Near 5th Ave & 96th St
-				[-73.9326, 40.7857]   // Back to start (SE)
-		],
+        		[-73.9323, 40.8016],  // E - Near 116th St & FDR Drive
+        		[-73.9321, 40.8127],  // NE - Near Harlem River Drive
+        		[-73.934282, 40.811572],  // N - Near 142nd St, -73.9387, 40.8183, -73.934282, 40.811572
+        		[-73.938930, 40.813136],  // NW - Near 5th Ave & 142nd St, -73.9470, 40.8179
+        		[-73.95574, 40.78796],  // SW - Near 5th Ave & 96th St (fixed to 5th Ave), -73.9589, 40.7947
+        		[-73.9326, 40.7857]   // Back to start (SE)
+		// 		 [-73.9326, 40.7857],  // SE - Near 96th St & FDR Drive, 
+		// 		 [-73.9323, 40.8016],  // E - Near 116th St & FDR Drive
+		// 		 [-73.9321, 40.8127],  // NE - Near Harlem River Drive
+		// 		 [-73.9387, 40.8183],  // N - Near 142nd St
+		// 		 [-73.9470, 40.8179],  // NW - Near 5th Ave & 142nd St
+		// 		 [-73.9589, 40.7947],  // SW - Near 5th Ave & 96th St
+		// 		 [-73.9326, 40.7857]   // Back to start (SE)
+		 ],
 			color: '#FF9B00',
 			opacity: 0.2
 		});
+
+		dollarSigns = new DollarSignsOverlay();
 
 	});
 
@@ -225,6 +285,14 @@
 		} else {
 			eastHarlemHighlight.remove();
 		}
+		// dollarSigns visibility handling
+		if (showDollarSigns) {
+			console.log('East Harlem coordinates:', eastHarlemHighlight.coordinates);
+			console.log('Adding dollar signs to map');
+			dollarSigns.addTo(map, eastHarlemHighlight.coordinates);
+		} else {
+			dollarSigns?.remove();
+        }
 
 	}
 

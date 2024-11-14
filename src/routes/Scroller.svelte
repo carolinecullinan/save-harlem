@@ -21,6 +21,7 @@
                 zoom: 10,
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: false,
             showSticker: false
@@ -33,6 +34,7 @@
                 zoom: 10,
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: false,
             showSticker: false
@@ -45,6 +47,7 @@
                 zoom: 14,
             },
             showMarker: true,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: false,
             showSticker: false
@@ -56,6 +59,7 @@
                 center: [-73.9373, 40.8044],
             },
             showMarker: true,
+            showDollarSigns: false,
             showStreet: true,
             showEastHarlem: false,
             showSticker: false
@@ -69,6 +73,7 @@
                 zoom: 13
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: false
@@ -82,6 +87,7 @@
                 zoom: 13
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: false
@@ -95,6 +101,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: false
@@ -107,6 +114,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: true,
@@ -124,9 +132,11 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: true,
             showStreet: false,
             showEastHarlem: true,
-            showSticker: false
+            showSticker: false,
+
         },
         {
             class: "visible",
@@ -136,6 +146,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: false
@@ -148,6 +159,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: true,
@@ -165,6 +177,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: false
@@ -177,6 +190,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: true,
@@ -194,6 +208,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: false
@@ -206,6 +221,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: false
@@ -218,6 +234,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: true,
@@ -235,6 +252,7 @@
                 zoom: 14
             },
             showMarker: false,
+            showDollarSigns: false,
             showStreet: false,
             showEastHarlem: true,
             showSticker: false
@@ -250,6 +268,8 @@
     $: showEastHarlem = index !== undefined ? steps[index].showEastHarlem : false;
     $: showSticker = index !== undefined ? steps[index].showSticker : false;
     $: artist = index !== undefined ? steps[index].artist : null;
+    $: showDollarSigns = index !== undefined ? steps[index].showDollarSigns : false;
+
 
     // $: console.log("currentState: ", currentState);
     // $: console.log("showMarker: ", showMarker);
@@ -266,7 +286,7 @@
         bind:progress
     >
         <div slot="background">
-            <Map {show} {currentState} {showMarker} {showStreet} {showEastHarlem} />
+            <Map {show} {currentState} {showMarker} {showStreet} {showEastHarlem} {showDollarSigns} />
         </div>
 
         <div slot="foreground">
