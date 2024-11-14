@@ -35,6 +35,12 @@
         Keep scrolling to see <b>East Harlem</b> through the eyes of young people who call it home.
         
         </p>
+
+        <div class="scroll-arrow">
+            <svg width="40" height="20" viewBox="0 0 40 20">
+                <path d="M20 20 L40 0 L0 0 Z" fill="#d2d1d1"/>
+            </svg>
+        </div>
     </div>
 </main>
 
@@ -124,11 +130,30 @@
 
     a {
         color: #d2d1d1;
-        text-decoration: none;
+        text-decoration: underline;
     }
 
     a:hover {
         text-decoration: underline;
     }
+
+    .scroll-arrow {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
 
 </style>
