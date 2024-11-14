@@ -92,7 +92,7 @@
             content: "<p>Don’t just take our word for it though, take it from <b>Tihanna</b>.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 13
+                zoom: 14
             },
             showMarker: false,
             showStreet: false,
@@ -104,7 +104,7 @@
             content: "<p> </p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 13
+                zoom: 14
             },
             showMarker: false,
             showStreet: false,
