@@ -146,36 +146,50 @@
 	/// ^^^ testing EastHighlight class above ^^^
 	
 	function addDollarSigns(map) {
-        if (!map.getSource('dollar-signs')) {
-            map.addSource('dollar-signs', {
-                type: 'geojson',
-                data: {
-                    type: 'FeatureCollection',
-                    features: [
-                        { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9373, 40.7990] }, properties: {} },
-                        { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9420, 40.7995] }, properties: {} },
-                        { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9350, 40.8020] }, properties: {} },
-                        { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9400, 40.8025] }, properties: {} }
-                    ]
-                }
-            });
+    if (!map.getSource('dollar-signs')) {
+        map.addSource('dollar-signs', {
+            type: 'geojson',
+            data: {
+                type: 'FeatureCollection',
+                features: [
+                    { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9373, 40.7990] }, properties: {} },
+                    { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9420, 40.7995] }, properties: {} },
+                    { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9350, 40.8020] }, properties: {} },
+                    { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9400, 40.8025] }, properties: {} }
+                ]
+            }
+        });
 
-            map.addLayer({
-                id: 'dollar-signs',
-                type: 'symbol',
-                source: 'dollar-signs',
-                layout: {
-                    'text-field': '$',
-                    'text-size': 24,
-                    'text-allow-overlap': true
-                },
-                paint: {
-                    'text-color': '#FFD700'
-                }
-            });
-        }
+        map.addLayer({
+            id: 'dollar-signs',
+            type: 'symbol',
+            source: 'dollar-signs',
+            layout: {
+                'text-field': '$',
+                'text-size': 24,
+                'text-allow-overlap': true
+            },
+            paint: {
+                'text-color': '#FFD700',
+                'text-translate': [0, 0]
+            }
+        });
+
+        // Add animation
+        let step = 0;
+        const animate = () => {
+            step += 0.1;
+            const offset = Math.sin(step) * 10;
+            
+            if (map.getLayer('dollar-signs')) {
+                map.setPaintProperty('dollar-signs', 'text-translate', [0, offset]);
+                requestAnimationFrame(animate);
+            }
+        };
+        
+        animate();
     }
-
+}
     function removeDollarSigns(map) {
         if (map.getLayer('dollar-signs')) {
             map.removeLayer('dollar-signs');
