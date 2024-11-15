@@ -229,7 +229,7 @@
         },
         {
             class: "visible",
-            content: "<p>According to the data, East Harlem has lost more than one in five of its small businesses along 116th Street and Third Avenue. That’s family-owned shops that had been here for generations, gone. Meanwhile, the number of chain stores between 96th and 125th Street has shot up by 35% - the biggest jump in the whole city.</p>",
+            content: "<p>According to the data, East Harlem has lost more than one in five of its small businesses along 116th Street and Third Avenue. That’s family-owned shops that had been here for generations, gone. Meanwhile, the number of chain stores between 96th and 125th Street has shot up by 35% - the biggest jump in the whole city.<br></br> None of this is okay.<br></br> <b>Sanaa</b> knows it, and she isn’t afraid to say it how it is: they are rebranding the whole town.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
                 zoom: 13
@@ -242,27 +242,27 @@
             showEastHarlem: true,
             showSticker: false
         },
-        {
-            class: "visible",
-            content: "<p>None of this is okay.<br></br> <b>Sanaa</b> knows it, and she isn’t afraid to say it how it is: they are rebranding the whole town.</p>",
-            mapState: {
-                center: [-73.9373, 40.8044],
-                zoom: 13
-            },
-            showMarker: false,
-            showDollarSigns: false,
-            showStreet: false,
-            show116Street: false,
-            show3rdAvenue: false,
-            showEastHarlem: true,
-            showSticker: false
-        },
+        // {
+        //     class: "visible",
+        //     content: "<p>None of this is okay.<br></br> <b>Sanaa</b> knows it, and she isn’t afraid to say it how it is: they are rebranding the whole town.</p>",
+        //     mapState: {
+        //         center: [-73.9373, 40.8044],
+        //         zoom: 13
+        //     },
+        //     showMarker: false,
+        //     showDollarSigns: false,
+        //     showStreet: false,
+        //     show116Street: false,
+        //     show3rdAvenue: false,
+        //     showEastHarlem: true,
+        //     showSticker: false
+        // },
         {
             class: "hidden",
             content: "<p> </p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 14
+                zoom: 13
             },
             showMarker: false,
             showDollarSigns: false,
@@ -278,11 +278,11 @@
             }
         },
         {
-            class: "visible",
-            content: "<p>Young people in East Harlem understand exactly what’s happening to their neighborhood. Maybe it’s time that we listen to them.</p>",
+            class: "hidden",
+            content: "<p> </p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 14
+                zoom: 13
             },
             showMarker: false,
             showDollarSigns: false,
