@@ -98,7 +98,7 @@
             content: "<p>Don’t just take our word for it though, take it from <b>Tihanna</b>.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 14
+                zoom: 13
             },
             showMarker: false,
             showDollarSigns: false,
@@ -126,10 +126,10 @@
         },
         {
             class: "visible",
-            content: "<p>Sadly, the numbers back up what Tihanna sees. In just the last few years, median rents in East Harlem have shot up faster than almost anywhere else in Manhattan. According to city data, from 2019 to 2022 the median asking rent in the neighborhood increased by almost 20%.  At the same time, East Harlem has some of the highest rates of eviction and homelessness in the city. Meanwhile, new “luxury” buildings keep popping up.</p>",
+            content: "<p>Sadly, the numbers back up what <b>Tihanna</b> sees. In just the last few years, median rents in East Harlem have shot up faster than almost anywhere else in Manhattan. According to city data, from 2019 to 2022 the median asking rent in the neighborhood increased by almost 20%.  At the same time, East Harlem has some of the highest rates of eviction and homelessness in the city. Meanwhile, new “luxury” buildings keep popping up.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 14
+                zoom: 13
             },
             showMarker: false,
             showDollarSigns: true,
@@ -140,10 +140,10 @@
         },
         {
             class: "visible",
-            content: "<p>Bailey can tell you all about it.</p>",
+            content: "<p><b>Bailey</b> can tell you all about it.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 14
+                zoom: 13
             },
             showMarker: false,
             showDollarSigns: false,
@@ -171,10 +171,10 @@
         },
         {
             class: "visible",
-            content: "<p>And Bailey isn’t the only one who is noticing the new apartment buildings for new and richer people. Elyssa sees it too - and knows that Harlem needs saving.</p>",
+            content: "<p>And <b>Bailey</b> isn’t the only one who is noticing the new apartment buildings for new and richer people.<br></br> <b>Elyssa</b> sees it too - and knows that Harlem needs saving.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 14
+                zoom: 13
             },
             showMarker: false,
             showDollarSigns: false,
@@ -205,7 +205,7 @@
             content: "<p>According to the data, East Harlem has lost more than one in five of its small businesses along 116th Street and Third Avenue. That’s family-owned shops that had been here for generations, gone. Meanwhile, the number of chain stores between 96th and 125th Street has shot up by 35% - the biggest jump in the whole city.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 14
+                zoom: 13
             },
             showMarker: false,
             showDollarSigns: false,
@@ -215,10 +215,10 @@
         },
         {
             class: "visible",
-            content: "<p>None of this is okay. Sanaa knows it too, and she isn’t afraid to say it how it is: they are rebranding the whole town.</p>",
+            content: "<p>None of this is okay.<br></br> <b>Sanaa</b> knows it, and she isn’t afraid to say it how it is: they are rebranding the whole town.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
-                zoom: 14
+                zoom: 13
             },
             showMarker: false,
             showDollarSigns: false,
