@@ -12,6 +12,7 @@
     let threshold = 0.5;
     let bottom = 0.9;
 
+
     const steps = [
         {
             class: "hidden",
@@ -23,6 +24,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: false,
             showSticker: false
         },
@@ -36,6 +39,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: false,
             showSticker: false
         },
@@ -49,6 +54,8 @@
             showMarker: true,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: false,
             showSticker: false
         },
@@ -61,6 +68,8 @@
             showMarker: true,
             showDollarSigns: false,
             showStreet: true,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: false,
             showSticker: false
         },
@@ -75,6 +84,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: false
         },
@@ -89,6 +100,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: false
         },
@@ -103,6 +116,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: false
         },
@@ -116,6 +131,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: true,
             artist: {
@@ -134,6 +151,8 @@
             showMarker: false,
             showDollarSigns: true,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: false,
 
@@ -148,6 +167,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: false
         },
@@ -161,6 +182,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: true,
             artist: {
@@ -179,6 +202,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: false
         },  
@@ -192,6 +217,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: true,
             artist: {
@@ -210,6 +237,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: true,
+            show3rdAvenue: true,
             showEastHarlem: true,
             showSticker: false
         },
@@ -223,6 +252,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: false
         },
@@ -236,6 +267,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: true,
             artist: {
@@ -254,6 +287,8 @@
             showMarker: false,
             showDollarSigns: false,
             showStreet: false,
+            show116Street: false,
+            show3rdAvenue: false,
             showEastHarlem: true,
             showSticker: false
         },
@@ -264,7 +299,9 @@
     $: show = index === 0 ? "manhattan" : "harlem";
     $: currentState = index !== undefined ? steps[index].mapState : null;
     $: showMarker = index !== undefined ? steps[index].showMarker : false;
-    $: showStreet = index !== undefined ? steps[index].showStreet : false;
+    $: showStreet = index !== undefined ? steps[index].showStreet : false;  
+    $: show116Street = index !== undefined ? steps[index].show116Street : false;
+    $: show3rdAvenue = index !== undefined ? steps[index].show3rdAvenue : false;
     $: showEastHarlem = index !== undefined ? steps[index].showEastHarlem : false;
     $: showSticker = index !== undefined ? steps[index].showSticker : false;
     $: artist = index !== undefined ? steps[index].artist : null;
@@ -286,7 +323,7 @@
         bind:progress
     >
         <div slot="background">
-            <Map {show} {currentState} {showMarker} {showStreet} {showEastHarlem} {showDollarSigns} />
+            <Map {show} {currentState} {showMarker} {showStreet} {show116Street} {show3rdAvenue} {showEastHarlem} {showDollarSigns} />
         </div>
 
         <div slot="foreground">

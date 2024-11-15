@@ -1,11 +1,14 @@
 <script>
 	import { onMount } from 'svelte';
 	import mapboxgl from 'mapbox-gl';
+	import { LeafyGreen } from 'lucide-svelte';
 
 	export let show;
 	export let currentState;
     export let showMarker;
 	export let showStreet;
+	export let show116Street;
+	export let show3rdAvenue;
 	export let showEastHarlem;
 	export let showDollarSigns;
 
@@ -19,8 +22,9 @@
     let marker; // marker for 125th street station
 	let streetHighlight_main; // highlight for 125th St / MLK Jr Blvd
 	let streetHighlight_diagonal; // highlight for diagonal portion of 125th St
+	let streetHighlight_116th; // highlight for 116th St
+	let streetHighlight_3rdAvenue; // highlight for 3rd Avenue
 	let eastHarlemHighlight; // highlight for East Harlem
-	//let dollarSignsLayer; // dollar signs for rent prices
 	let map;
 
 	// create a street highlight object (similar to marker)
@@ -165,13 +169,9 @@
 					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.934412, 40.805475] }, properties: {} },
 					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.946156, 40.795138] }, properties: {} },
 					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.945604, 40.801483] }, properties: {} },
-					
+				
 					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.942002, 40.806266] }, properties: {} },
 					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.935964, 40.806677] }, properties: {} },
-
-
-
-
                     { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9400, 40.8025] }, properties: {} }
                 ]
             }
@@ -251,6 +251,29 @@
 			width: 8
 		});
 
+		// create streetHighlight_116th but don't show it yet
+		streetHighlight_116th = new StreetHighlight({
+			coordinates: [
+				[-73.946369, 40.800631], // western street point
+				//[-73.931911, 40.794558] // eastern street point
+				[-73.932852, 40.794917]
+		],
+			color: '#FF9B00',
+			width: 8
+		});
+
+		// create streetHighlight_3rdAvenue but don't show it yet
+		streetHighlight_3rdAvenue = new StreetHighlight({
+			coordinates: [
+				//[-73.944595, 40.791800], // southern point (keep as is)
+				//[-73.934926, 40.804998]  // northern point (shifted east to create angle)	
+				[-73.948300, 40.7870000], // southern point (keep as is) -73.944595, 40.791800
+				[-73.934110, 40.806600] 
+		  ],  // northern point (shifted east to create angle)	],
+			color: '#FF9B00',
+			width: 8
+		});
+
 		// create highlight of East Harlem
 		eastHarlemHighlight = new EastHarlemHighlight({
 			coordinates: [
@@ -295,6 +318,18 @@
 		} else {
 			streetHighlight_main.remove();
 			streetHighlight_diagonal.remove();
+		}
+		// streetHighlight_116th visibility handling
+		if (show116Street) {
+			streetHighlight_116th.addTo(map);
+		} else {
+			streetHighlight_116th.remove();
+		}
+		// streetHighlight_3rdAvenue visibility handling
+		if (show3rdAvenue) {
+			streetHighlight_3rdAvenue.addTo(map);
+		} else {
+			streetHighlight_3rdAvenue.remove();
 		}
 		// EastHarlemHighlight visibility handling
 		if (showEastHarlem) {
