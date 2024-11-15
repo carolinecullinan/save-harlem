@@ -10,7 +10,7 @@
     
     <p> This visual project uses art and audio recordings collected during August 2024 workshops on gentrification in East Harlem with young participants in the <a href="https://anotherchoicenyc.org/comm-service-learning" target="_blank">Community Service Learning Initiative</a> at <a href="https://anotherchoicenyc.org/" target="_blank">Another Choice Youth and Family Outreach</a>.  Participants were asked to visually explore gentrification in their neighborhood via art and then describe their pieces.<br><br>
 
-        The code behind this application is freely available on <a href="https://github.com/carolinecullinan/save-harlem" target="_blank">GitHub</a><br><br>
+        The code behind this application is freely available on <a href="https://github.com/carolinecullinan/save-harlem" target="_blank">GitHub</a>.<br><br>
         
         This project was made possible through community and collaboration with all of the young participants in our summer 2024 Community Service Learning Initiative. Special thanks to Tihanna, Bailey, Elyssa, and Sanaa for sharing their art, perspectives, and experiences.<br><br>
         
