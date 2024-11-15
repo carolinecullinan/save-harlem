@@ -2,12 +2,13 @@
 	import Header from './Header.svelte';
 	import '../app.css';
 	import Scroller from './Scroller.svelte';
-
+	import Closer from './Closer.svelte';
 	let { children } = $props();
 	console.log("testing")
 </script>
 	<Header />
 	<Scroller />
+	<Closer />	
 
 
 <style>
