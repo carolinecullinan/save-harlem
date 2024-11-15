@@ -7,7 +7,7 @@
     export let showMarker;
 	export let showStreet;
 	export let showEastHarlem;
-	export let showDollarSigns = false;
+	export let showDollarSigns;
 
 
 	$: console.log(currentState);
@@ -20,57 +20,8 @@
 	let streetHighlight_main; // highlight for 125th St / MLK Jr Blvd
 	let streetHighlight_diagonal; // highlight for diagonal portion of 125th St
 	let eastHarlemHighlight; // highlight for East Harlem
-	let dollarSigns; // dollar signs for rent prices
+	//let dollarSignsLayer; // dollar signs for rent prices
 	let map;
-
-	class DollarSignsOverlay {
-    constructor() {
-        this.markers = [];
-    }
-
-    addTo(map) {
-        this.remove();
-
-        // Array of specific coordinates for East Harlem
-        const coordinates = [
-            [-73.94313, 40.80257], // Replace these with your 15 coordinate pairs
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003], // Replace with actual coordinate
-            [-73.9389, 40.8003]  // Replace with actual coordinate
-        ];
-
-        coordinates.forEach(([lng, lat]) => {
-            const el = document.createElement('div');
-            el.className = 'dollar-sign';
-            el.textContent = '$';
-
-            const marker = new mapboxgl.Marker({
-                element: el,
-                anchor: 'center'
-            })
-            .setLngLat([lng, lat])
-            .addTo(map);
-
-            this.markers.push(marker);
-        });
-    }
-
-    remove() {
-        this.markers.forEach(marker => marker.remove());
-        this.markers = [];
-    }
-}
 
 	// create a street highlight object (similar to marker)
 	class StreetHighlight {
@@ -191,12 +142,49 @@
 			}
 		}
 	}
-
-	
 	/// ^^^ testing EastHighlight class below ^^^
 	/// ^^^ testing EastHighlight class above ^^^
 	
-	
+	function addDollarSigns(map) {
+        if (!map.getSource('dollar-signs')) {
+            map.addSource('dollar-signs', {
+                type: 'geojson',
+                data: {
+                    type: 'FeatureCollection',
+                    features: [
+                        { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9373, 40.7990] }, properties: {} },
+                        { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9420, 40.7995] }, properties: {} },
+                        { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9350, 40.8020] }, properties: {} },
+                        { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9400, 40.8025] }, properties: {} }
+                    ]
+                }
+            });
+
+            map.addLayer({
+                id: 'dollar-signs',
+                type: 'symbol',
+                source: 'dollar-signs',
+                layout: {
+                    'text-field': '$',
+                    'text-size': 24,
+                    'text-allow-overlap': true
+                },
+                paint: {
+                    'text-color': '#FFD700'
+                }
+            });
+        }
+    }
+
+    function removeDollarSigns(map) {
+        if (map.getLayer('dollar-signs')) {
+            map.removeLayer('dollar-signs');
+            map.removeSource('dollar-signs');
+        }
+    }
+
+
+
 	onMount(() => {
 		// initialize Mapbox
 		map = new mapboxgl.Map({
@@ -232,7 +220,7 @@
 			width: 8
 		});
 
-		// create another streetHighlight_diagonal - diagonal portion of 125th St
+		// create highlight of East Harlem
 		eastHarlemHighlight = new EastHarlemHighlight({
 			coordinates: [
 				[-73.9326, 40.7857],  // SE - Near 96th St & FDR Drive
@@ -252,11 +240,9 @@
 		 ],
 			color: '#FF9B00',
 			opacity: 0.2
-		});
-
-		dollarSigns = new DollarSignsOverlay();
-
+		});	
 	});
+
 
 	// add or remove marker, streetHighlight, and EastHarlemHighlight based on the step
 	$: if (map !== undefined) {
@@ -287,11 +273,9 @@
 		}
 		// dollarSigns visibility handling
 		if (showDollarSigns) {
-			console.log('East Harlem coordinates:', eastHarlemHighlight.coordinates);
-			console.log('Adding dollar signs to map');
-			dollarSigns.addTo(map, eastHarlemHighlight.coordinates);
+			addDollarSigns(map);
 		} else {
-			dollarSigns?.remove();
+			removeDollarSigns(map);
         }
 
 	}
