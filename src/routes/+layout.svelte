@@ -3,12 +3,14 @@
 	import '../app.css';
 	import Scroller from './Scroller.svelte';
 	import Closer from './Closer.svelte';
+	import Methods from './Methods.svelte';
 	let { children } = $props();
 	console.log("testing")
 </script>
 	<Header />
 	<Scroller />
 	<Closer />	
+	<Methods />
 
 
 <style>

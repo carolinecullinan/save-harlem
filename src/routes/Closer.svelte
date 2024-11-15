@@ -17,7 +17,7 @@
         
         max-width: 640px;
         margin: 0 auto;
-        padding: 200px 50px 0 50px;
+        padding: 200px 50px 100px 50px;
     }
 
     .closer p {
