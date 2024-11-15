@@ -155,6 +155,23 @@
                     { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9373, 40.7990] }, properties: {} },
                     { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9420, 40.7995] }, properties: {} },
                     { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9350, 40.8020] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.939030, 40.808622] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.944180, 40.790754] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.937828, 40.791794] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.952935, 40.789194] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.940947, 40.796750] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.941750, 40.793059] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.937370, 40.795589] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.934412, 40.805475] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.946156, 40.795138] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.945604, 40.801483] }, properties: {} },
+					
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.942002, 40.806266] }, properties: {} },
+					{ type: 'Feature', geometry: { type: 'Point', coordinates: [-73.935964, 40.806677] }, properties: {} },
+
+
+
+
                     { type: 'Feature', geometry: { type: 'Point', coordinates: [-73.9400, 40.8025] }, properties: {} }
                 ]
             }
