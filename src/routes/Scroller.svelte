@@ -92,7 +92,7 @@
 
         {
             class: "visible",
-            content: "<p> Today, East Harlem is still mostly Black, Puerto Rican, and immigrant families. Local groups are still fighting for the community’s rights. But things are also starting to look different around here.</p>",
+            content: "<p> Today, East Harlem is still mostly Black, Puerto Rican, and immigrant families. Local groups are still fighting for the community’s rights. But things are also starting to look different around here.<br></br>Don’t just take our word for it though, take it from <b>Tihanna.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
                 zoom: 13
@@ -106,21 +106,21 @@
             showSticker: false
         },
 
-        {
-            class: "visible",
-            content: "<p>Don’t just take our word for it though, take it from <b>Tihanna</b>.</p>",
-            mapState: {
-                center: [-73.9373, 40.8044],
-                zoom: 13
-            },
-            showMarker: false,
-            showDollarSigns: false,
-            showStreet: false,
-            show116Street: false,
-            show3rdAvenue: false,
-            showEastHarlem: true,
-            showSticker: false
-        },
+        // {
+        //     class: "visible",
+        //     content: "<p>Don’t just take our word for it though, take it from <b>Tihanna</b>.</p>",
+        //     mapState: {
+        //         center: [-73.9373, 40.8044],
+        //         zoom: 13
+        //     },
+        //     showMarker: false,
+        //     showDollarSigns: false,
+        //     showStreet: false,
+        //     show116Street: false,
+        //     show3rdAvenue: false,
+        //     showEastHarlem: true,
+        //     showSticker: false
+        // },
         {
             class: "hidden",
             content: "<p> </p>",
@@ -143,7 +143,7 @@
         },
         {
             class: "visible",
-            content: "<p>Sadly, the numbers back up what <b>Tihanna</b> sees. In just the last few years, median rents in East Harlem have shot up faster than almost anywhere else in Manhattan. According to city data, from 2019 to 2022 the median asking rent in the neighborhood increased by almost 20%.  At the same time, East Harlem has some of the highest rates of eviction and homelessness in the city. Meanwhile, new “luxury” buildings keep popping up.</p>",
+            content: "<p>Sadly, the numbers back up what <b>Tihanna</b> sees. In just the last few years, median rents in East Harlem have shot up faster than almost anywhere else in Manhattan. According to city data, from 2019 to 2022 the median asking rent in the neighborhood increased by almost 20%.  At the same time, East Harlem has some of the highest rates of eviction and homelessness in the city. Meanwhile, new “luxury” buildings keep popping up.<br></br><b>Bailey</b> can tell you all about it.</p>",
             mapState: {
                 center: [-73.9373, 40.8044],
                 zoom: 13
@@ -157,21 +157,21 @@
             showSticker: false,
 
         },
-        {
-            class: "visible",
-            content: "<p><b>Bailey</b> can tell you all about it.</p>",
-            mapState: {
-                center: [-73.9373, 40.8044],
-                zoom: 13
-            },
-            showMarker: false,
-            showDollarSigns: false,
-            showStreet: false,
-            show116Street: false,
-            show3rdAvenue: false,
-            showEastHarlem: true,
-            showSticker: false
-        },
+        // {
+        //     class: "visible",
+        //     content: "<p><b>Bailey</b> can tell you all about it.</p>",
+        //     mapState: {
+        //         center: [-73.9373, 40.8044],
+        //         zoom: 13
+        //     },
+        //     showMarker: false,
+        //     showDollarSigns: false,
+        //     showStreet: false,
+        //     show116Street: false,
+        //     show3rdAvenue: false,
+        //     showEastHarlem: true,
+        //     showSticker: false
+        // },
         {
             class: "hidden",
             content: "<p> </p>",
