@@ -1,14 +1,15 @@
 <script lang="ts">
 	import Header from './Header.svelte';
 	import '../app.css';
-	import Scroller from './Scroller.svelte';
+	import Scroll from './Scroll.svelte';
 	import Closer from './Closer.svelte';
 	import Methods from './Methods.svelte';
-	let { children } = $props();
+	// let { children } = $props();
 	console.log("testing")
 </script>
+
 	<Header />
-	<Scroller />
+	<Scroll />
 	<Closer />	
 	<Methods />
 
